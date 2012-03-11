@@ -6,11 +6,25 @@
 <body>
 <table border = 1 >	
 	<tr>
-		<th>NO</th>
-		<th>filename</th>
+		<th>Name</th>
+		<th>UploadTime</th>
 	</tr>
-	<?php 
+	<?php  
+		$conn=mysql_connect('localhost:3306','root','wbzdmm') 			or die("connect database fail!\n").mysql_error();
+		$select=mysql_select_db('wav_test',$conn) 
+		or die("connect wav database fail!\n").mysql_error();
+		//$ss="set names gbk";
+		//$aa=mysql_query($ss);
+		$str="select * from WAV_FILES order by uploadTime desc";
+		$recstr=mysql_query($str);
+		$row=mysql_fetch_row($recstr);
+		while($row)
+		{ 
+		echo "<tr><td>$row[1]</td><td>$row[2]</td></tr>";
+		$row=mysql_fetch_row($recstr);
+		}
 		/*  something   */
+		/*
 		$filename =$_SERVER['DOCUMENT_ROOT'] . "/UploadedInfo/" . $_SERVER["REMOTE_ADDR"] .'_'.date("Ymd"). ".txt";
 		if (!$handle = fopen ($filename,"r"))
 		{
@@ -20,7 +34,7 @@
 		$i = 0;
 		while (!feof($handle))
 		{
-			$file = fgets($handle,1024);
+			$file = substr(fgets($handle,1024),14);
 			$i++;
 			if (strlen($file)!= 0)
 			{
@@ -28,7 +42,8 @@
 			}
 		}
 		fclose($handle);
-		//unlink($filename);
+		//unlink($filename);*/
+		mysql_close($conn);
 	?>
 </table>
 <p>Task Type</p>

@@ -31,7 +31,7 @@ function SaveUploadedInfo($filename,$uploaded)
 		exit;
 	}else
 	{
-		if (!fwrite($handle,$uploaded))
+		if (!fwrite($handle,$uploaded.$_FILES['Filedata']['error']))
 		{
 			echo "can not write to $filename";
 			exit;
@@ -44,11 +44,43 @@ function SaveUploadedInfo($filename,$uploaded)
 $uploadinfofile=$_SERVER['DOCUMENT_ROOT'] . "/UploadedInfo/" . $_SERVER["REMOTE_ADDR"] .'_'.date("Ymd"). ".txt";
 if (!empty($_FILES)) {
 	$tempFile = $_FILES['Filedata']['tmp_name'];
-	$targetPath = $_SERVER['DOCUMENT_ROOT'] . $_REQUEST['folder'] . '/';
-	$targetFile =  str_replace('//','/',$targetPath) . $_FILES['Filedata']['name'];
+	$targetPath = $_REQUEST['folder'] . '/';
+	$targetFile = $targetPath . $_FILES['Filedata']['name'];
+
+	move_uploaded_file($tempFile, $targetFile);
+	SaveUploadedInfo($uploadinfofile,$showName. "\r\n");
+	echo "OK\n";//there is something wrong that i cannot remove this line!
+	//echo str_replace($_SERVER['DOCUMENT_ROOT'],'', $targetFile);
+	$mysql_server_name='localhost:3306';//database location
+	$mysql_username='root';
+	$mysql_password='wbzdmm';
+	$mysql_database='wav_test';
+	$conn=mysql_connect($mysql_server_name,$mysql_username,$mysql_password);
+	mysql_select_db($mysql_database,$conn);  
+	if ($conn==FALSE)
+  	{
+		mysql_close($conn);
+  		die('Could not connect: ' . mysql_error());
+  	}
+	$filemd5=md5_file($targetFile);
+	$uploadTime=date("Y-m-d H:i:s");
+	$name=$_FILES['Filedata']['name'];
+	$showName=date("YmdHis").$_FILES['Filedata']['name'];
+	$sql="insert into WAV_FILES values('$filemd5','$name','$uploadTime','$showName')";
+	$status=mysql_query($sql);
+	if($status==FALSE)
+	{
+		//echo "insert fail!\n";
+		mysql_close($conn);
+		//echo("<script type='text/javascript'> alert('file existed!');self.location.href='http://127.0.0.1/index.html';</script>");
+		
+		exit;
+	}
+	mysql_close($conn);
 	
-	move_uploaded_file($tempFile,iconv("UTF-8","gb2312", $targetFile));
-	echo str_replace($_SERVER['DOCUMENT_ROOT'],'',iconv("UTF-8","gb2312", $targetFile));
-	SaveUploadedInfo($uploadinfofile,iconv("UTF-8","gb2312",$_FILES['Filedata']['name']) . "\r\n");
+	
+
+//save info to database
+	
 }
 ?>
