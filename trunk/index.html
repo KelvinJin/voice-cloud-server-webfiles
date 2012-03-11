@@ -14,13 +14,14 @@
                 'uploader': '/uploadify/uploadify.swf',
                 'script': '/uploadify/uploadify.php',
                 'cancelImg': '/uploadify/cancel.png',
-                'folder': '/UploadFiles',
+                'folder': '/home/share',
+		'fileDesc':'please select .wav files',
+		'fileExt':'*.wav',
                 'auto':true,
                 'multi':true,				
 				'onError': function(event,queueId,fileObj,errorObj)
 				{
 					alert("error type:"+errorObj.type+"\n"+"error info:"+errorObj.info+"\n");
-
 				},
 				'onAllComplete': function(event,data)
 				{
