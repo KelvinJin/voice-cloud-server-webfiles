@@ -8,10 +8,40 @@
 /*  
  something
  */
-	echo "create some files­";
+function SaveTaskInfo($filename,$task_info)
+{
+	if (!$handle = fopen($filename,'a'))
+	 {
+		echo "can not open $filename";
+		exit;
+	}else
+	{
+		foreach($task_info as $value)
+		{
+			$pos = strpos($value,' ');
+			$row0 = substr($value,0,$pos);
+			$row0 = substr($value,$pos+1);
+			$filepath = ;
+			if (!fwrite($handle,$filepath))
+			{
+				echo "can not write to $filename";
+				exit;
+			}
+		}
+		
+		fclose($handle);
+	}
+	
+}
+	
+	echo "create some files";
 	$temp =$_SERVER['DOCUMENT_ROOT'] . "/TaskList/" . $_SERVER["REMOTE_ADDR"] .'_'. date("Ymd_His").'_';
 	$msg=$_SERVER["REMOTE_ADDR"] .'_'. date("Ymd_His").'_';
 	$filename_r = $_SERVER['DOCUMENT_ROOT'] . "/UploadedInfo/" . $_SERVER["REMOTE_ADDR"] .'_'.date("Ymd"). ".txt";
+	$file_ch=$_POST["file_ch"];
+	
+	SaveTaskInfo($filename_r,$file_ch);
+	
 	$ch = $_POST["ch"];
 	if(!empty($ch))
 	{

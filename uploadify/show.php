@@ -4,11 +4,13 @@
 <title>tasksend</title> 
 </head>
 <body>
+<form method="post" action="tasklist.php" name="form1">
 <table border = 1 >	
 	<tr>
 		<th>Name</th>
 		<th>UploadTime</th>
-	</tr>
+		<th>Seclect or not</th>
+	</tr> 
 	<?php  
 		$conn=mysql_connect('localhost:3306','root','wbzdmm') 			or die("connect database fail!\n").mysql_error();
 		$select=mysql_select_db('wav_test',$conn) 
@@ -20,9 +22,10 @@
 		$row=mysql_fetch_row($recstr);
 		while($row)
 		{ 
-		echo "<tr><td>$row[1]</td><td>$row[2]</td></tr>";
-		$row=mysql_fetch_row($recstr);
+			echo "<tr><td>$row[1]</td><td>$row[2]</td><td><input type=\"checkbox\" name=\"file_ch[]\" value=\"$row[1] $row[2]\"></td></tr>";
+			$row=mysql_fetch_row($recstr);
 		}
+		echo 
 		/*  something   */
 		/*
 		$filename =$_SERVER['DOCUMENT_ROOT'] . "/UploadedInfo/" . $_SERVER["REMOTE_ADDR"] .'_'.date("Ymd"). ".txt";
@@ -47,7 +50,6 @@
 	?>
 </table>
 <p>Task Type</p>
-<form method="post" action="tasklist.php" name="form1"> 
 	<input type="checkbox" name="ch[]" value="test">test<br> 
 	<input type="checkbox" name="ch[]" value="Sentiment Analysis">Sentiment Analysis<br> 
 	<input type="checkbox" name="ch[]" value="Homologous Analysis">Homologous Analysis<br> 

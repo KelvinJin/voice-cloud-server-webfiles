@@ -23,32 +23,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-function SaveUploadedInfo($filename,$uploaded)
-{
-	if (!$handle = fopen($filename,'a'))
-	 {
-		echo "can not open $filename";
-		exit;
-	}else
-	{
-		if (!fwrite($handle,$uploaded.$_FILES['Filedata']['error']))
-		{
-			echo "can not write to $filename";
-			exit;
-		}
-		fclose($handle);
-	}
-	
-}
 
-$uploadinfofile=$_SERVER['DOCUMENT_ROOT'] . "/UploadedInfo/" . $_SERVER["REMOTE_ADDR"] .'_'.date("Ymd"). ".txt";
 if (!empty($_FILES)) {
 	$tempFile = $_FILES['Filedata']['tmp_name'];
 	$targetPath = $_REQUEST['folder'] . '/';
 	$targetFile = $targetPath . $_FILES['Filedata']['name'];
 
 	move_uploaded_file($tempFile, $targetFile);
-	SaveUploadedInfo($uploadinfofile,$showName. "\r\n");
+	
 	echo "OK\n";//there is something wrong that i cannot remove this line!
 	//echo str_replace($_SERVER['DOCUMENT_ROOT'],'', $targetFile);
 	$mysql_server_name='localhost:3306';//database location
