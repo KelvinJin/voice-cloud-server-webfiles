@@ -62,10 +62,10 @@ function SaveTaskInfo($filename,$task_info)
 			case "Homologous Analysis":
 				$buf = '2';
 				break;
-			case "Keyword Search":
+			case "Source Analysis":
 				$buf = '3';
 				break;
-			case "Source Analysis":
+			case "Keyword Search":
 				$buf = '4';
 				break;
 		}	
