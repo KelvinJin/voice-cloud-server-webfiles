@@ -27,7 +27,8 @@ THE SOFTWARE.
 if (!empty($_FILES)) {
 	$tempFile = $_FILES['Filedata']['tmp_name'];
 	$targetPath = $_REQUEST['folder'] . '/';
-	$targetFile = $targetPath . $_FILES['Filedata']['name'];
+	$showName=date("YmdHis").$_FILES['Filedata']['name'];
+	$targetFile = $targetPath . $showName;
 
 	move_uploaded_file($tempFile, $targetFile);
 	
@@ -47,7 +48,7 @@ if (!empty($_FILES)) {
 	$filemd5=md5_file($targetFile);
 	$uploadTime=date("Y-m-d H:i:s");
 	$name=$_FILES['Filedata']['name'];
-	$showName=date("YmdHis").$_FILES['Filedata']['name'];
+	
 	$sql="insert into WAV_FILES values('$filemd5','$name','$uploadTime','$showName')";
 	$status=mysql_query($sql);
 	if($status==FALSE)
