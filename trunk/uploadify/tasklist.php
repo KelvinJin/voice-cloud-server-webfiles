@@ -16,25 +16,36 @@ function SaveTaskInfo($filename,$task_info)
 		exit;
 	}else
 	{
+		$conn=mysql_connect('localhost:3306','root','wbzdmm') 			or die("connect database fail!\n").mysql_error();
+		$select=mysql_select_db('wav_test',$conn) 
+			or die("connect wav database fail!\n").mysql_error();
+		//$ss="set names gbk";
+		//$aa=mysql_query($ss);
 		foreach($task_info as $value)
 		{
 			$pos = strpos($value,' ');
-			$row0 = substr($value,0,$pos);
-			$row0 = substr($value,$pos+1);
-			$filepath = ;
+			$row1 = substr($value,0,$pos);
+			$row2 = substr($value,$pos+1);
+			mysql_query("set names 'utf8'"); 
+			$str="select * from WAV_FILES WHERE wavMd5='$value'";
+			$recstr=mysql_query($str) or die (mysql_error());
+			$row=mysql_fetch_row($recstr);
+			$filepath=$row[3];
 			if (!fwrite($handle,$filepath))
 			{
+				
 				echo "can not write to $filename";
 				exit;
 			}
+			fwrite($handle,"\n");
 		}
-		
+		fwrite($handle,"\n");
 		fclose($handle);
+		mysql_close($conn);
 	}
 	
 }
-	
-	echo "create some files";
+
 	$temp =$_SERVER['DOCUMENT_ROOT'] . "/TaskList/" . $_SERVER["REMOTE_ADDR"] .'_'. date("Ymd_His").'_';
 	$msg=$_SERVER["REMOTE_ADDR"] .'_'. date("Ymd_His").'_';
 	$filename_r = $_SERVER['DOCUMENT_ROOT'] . "/UploadedInfo/" . $_SERVER["REMOTE_ADDR"] .'_'.date("Ymd"). ".txt";

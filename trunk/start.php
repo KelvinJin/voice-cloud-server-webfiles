@@ -1,3 +1,3 @@
 <?php 
-	system("/home/owenwj/prog/server/addclient");
+	system("/home/owenwj/prog/server/server");
 ?>
