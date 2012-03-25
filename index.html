@@ -1,7 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
-<title>voicecloud</title> 
+<title>voicecloud</title>
+<link href="css/layout.css" rel="stylesheet" type="text/css" />
+<link href="css/nav.css" rel="stylesheet" type="text/css" />
+<link href="css/nav_left.css" rel="stylesheet" type="text/css" />
+<link href="css/block.css" rel="stylesheet" type="text/css" />
+<link href="css/button.css" rel="stylesheet" type="text/css" />
+ 
 <link href="uploadify/uploadify.css" type="text/css" rel="Stylesheet" rev="Stylesheet" />
 <script type="text/javascript" language="javascript" src="uploadify/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" language="javascript" src="uploadify/swfobject.js"></script>
@@ -35,9 +41,34 @@
         });
 
     </script>
+<style type="text/css">
+<!--
+@import url("css/layout.css");
+-->
+</style>
+<link href="css/layout.css" rel="stylesheet" type="text/css" />
 </head>
-<body> 
-	<input type="file" name="file_upload" id="file_upload" />
+<body>
+<div id="header">
+	<div id="nav">
+		<ul>
+		<li><a href="index.html">Home Page</a></li> 
+		<li class="vline"></li>
+		<li><a href="client.html">Join The Cloud</a></li>
+		<li class="vline"></li>
+		<li><a href="server.html">Server Control</a></li>
+		<li class="vline"></li>
+		</ul>
+	</div>
+</div>
+<div id="wrap">
+	<div id="sider_left">
+	</div>
+	<div id="main">
+		<input type="file" name="file_upload" id="file_upload" />
+		<a href="uploadify/show.php" class="btn blue">View The Database</a>
+	</div>
+</div>
 	<input type="button" onclick="window.location.href='uploadify/show.php';" value="choose files without uploading">
 </body>
 </html>

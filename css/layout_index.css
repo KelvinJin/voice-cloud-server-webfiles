@@ -1,0 +1,11 @@
+body {
+	background-image: url(../images/background.jpg);
+	background-repeat: no-repeat;
+	margin: 0px;
+}  
+#main {
+	width : 1024px;
+	height : 768px;
+	background-image: url(../images/index.jpg);
+	background-repeat: no-repeat;
+}

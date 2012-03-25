@@ -1,0 +1,34 @@
+#nav{
+	padding-top: 40px;
+	height:25px;
+	width:550px;
+	padding-left: 300px;
+}
+.vline{
+background:#999;
+width: 1px;
+height:25px;
+}
+#nav ul{
+margin:0px;
+padding:0px;
+list-style-type:none;
+}
+#nav li{
+	float:left;
+	font-family:"Î¢ÈíÑÅºÚ";
+	font-weight:bold;
+	font-size:16px;
+	text-align:center;
+	font-style:italic;
+}
+#nav li a{
+display:block;
+width:150px;
+line-height:28px;
+color:#000000;
+text-decoration:none;
+}
+#nav li a:hover{
+color:#7C8DD9;
+}
