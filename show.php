@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
 <title>Database Info</title>
-<link href="css/layout.css" rel="stylesheet" type="text/css" />
-<link href="css/nav.css" rel="stylesheet" type="text/css" />
-<link href="css/nav_left.css" rel="stylesheet" type="text/css" />
-<link href="css/block.css" rel="stylesheet" type="text/css" />
-<link href="css/button.css" rel="stylesheet" type="text/css" />
-<link href="css/table.css" rel="stylesheet" type="text/css" />
+<link href="uploadify/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="uploadify/css/nav.css" rel="stylesheet" type="text/css" />
+<link href="uploadify/css/nav_left.css" rel="stylesheet" type="text/css" />
+<link href="uploadify/css/block.css" rel="stylesheet" type="text/css" />
+<link href="uploadify/css/button.css" rel="stylesheet" type="text/css" />
+<link href="uploadify/css/table.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript"> 
 	function chooseAll(cName) 
 	{ 
@@ -21,11 +21,11 @@
 <div id="header">
 	<div id="nav">
 		<ul>
-		<li><a href="index.html">Home Page</a></li> 
+		<li><a href="uploadify/index.html">Home Page</a></li> 
 		<li class="vline"></li>
-		<li><a href="client.html">Join The Cloud</a></li>
+		<li><a href="uploadify/client.html">Join The Cloud</a></li>
 		<li class="vline"></li>
-		<li><a href="server.html">Server Control</a></li>
+		<li><a href="uploadify/server.html">Server Control</a></li>
 		<li class="vline"></li>
 		</ul>
 	</div>
