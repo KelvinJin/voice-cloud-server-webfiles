@@ -1,0 +1,28 @@
+table{
+    table-layout:fixed;
+    empty-cells:show; 
+    border-collapse: collapse;
+    margin:0 auto;
+	border:1px solid #cad9ea;
+    color:#666;
+}
+td{
+    height:20px;
+}
+
+
+/*这个是借鉴一个论坛的样式*/
+table th {
+    background-image: url(th_bg1.gif);
+    background-repeat::repeat-x;
+    height:30px;
+	border:1px solid #cad9ea;
+    padding:0 1em 0;
+}
+table td{
+    border:1px solid #cad9ea;
+    padding:0 1em 0;
+}
+table tr{
+    background-color:#f5fafe;
+}

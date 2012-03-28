@@ -1,4 +1,4 @@
-.btn { display: block; position: relative; background: #aaa; padding: 5px; float: left; color: #fff; text-decoration: none; cursor: pointer; }
+.btn { display: block; position: relative; background: #aaa; padding: 10px; float: left; color: #fff; text-decoration: none; cursor: pointer; }
 .btn * { font-style: normal; background-image: url(btn2.png); background-repeat: no-repeat; display: block; position: relative; }
 .btn i { background-position: top left; position: absolute; margin-bottom: -5px;  top: 0; left: 0; width: 5px; height: 5px; }
 .btn span { background-position: bottom left; left: -5px; padding: 0 0 5px 10px; margin-bottom: -5px; }
@@ -10,13 +10,13 @@
 
 .btn.blue { background: #2ae; }
 .btn.green { background: #9d4; }
-.btn.pink { background: #e1a; }
+.btn.black { background:#333333; }
 .btn:hover { background-color: #a00; }
 .btn:active { background-color: #444; }
 .btn[class] {
 	background-image: url(shade.png);
 	background-position: bottom;
-	font-family: "Î¢ÈíÑÅºÚ";
+	font-family:"Î¢ÈíÑÅºÚ";
 	font-weight: bold;
 }
 

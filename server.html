@@ -1,14 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-<head> 
-<title>servercontrol</title> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Server Control</title>
+<link href="css/layout.css" rel="stylesheet" type="text/css" />
+<link href="css/nav.css" rel="stylesheet" type="text/css" />
+<link href="css/nav_left.css" rel="stylesheet" type="text/css" />
+<link href="css/block.css" rel="stylesheet" type="text/css" />
+<link href="css/button.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-	<form method="post" action="start.php" name="form1"> 
-	<input type="submit" value="start server"> 
-	</form> 
-	<form method="post" action="close.php" name="form1"> 
-	<input type="submit" value="close server"> 
-	</form> 
+<div id="header">
+	<div id="nav">
+		<ul>
+		<li><a href="index.html">Home Page</a></li> 
+		<li class="vline"></li>
+		<li><a href="client.html">Join The Cloud</a></li>
+		<li class="vline"></li>
+		<li><a href="server.html">Server Control</a></li>
+		<li class="vline"></li>
+		</ul>
+	</div>
+</div>
+<div id="wrap">
+ 	<div id="sider_left"></div>
+ 	<div id="main">
+		<p> You can start the server by clicking the button below:</p>
+		<a  href="start.php" class="btn blue">START SERVER      </a>
+		
+		<p><br /></p>
+		<p><br /></p>
+		<p> Or you can close the server by clicking the button below:</p>
+		<a  href="close.php" class="btn blue">CLOSE SERVER      </a>
+	</div>
+</div>
+ <div id="sider_right"></div>
+ <div id="wrapclear"></div>
+</div>
 </body>
 </html>

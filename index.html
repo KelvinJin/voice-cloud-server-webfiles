@@ -21,8 +21,8 @@
                 'script': '/uploadify/uploadify.php',
                 'cancelImg': '/uploadify/cancel.png',
                 'folder': '/home/share',
-		'fileDesc':'please select .wav files',
-		'fileExt':'*.wav',
+				'fileDesc':'please select .wav files',
+				'fileExt':'*.wav',
                 'auto':true,
                 'multi':true,				
 				'onError': function(event,queueId,fileObj,errorObj)
@@ -64,11 +64,12 @@
 <div id="wrap">
 	<div id="sider_left">
 	</div>
-	<div id="main">
+  <div id="main">
+		<p> You can now upload the WAV files by clicking the button below:</p>
 		<input type="file" name="file_upload" id="file_upload" />
-		<a href="uploadify/show.php" class="btn blue">View The Database</a>
-	</div>
+		<p> If you just want to view the database,you can click the button below:</p>
+	    <a  href="uploadify/show.php" class="btn blue">VIEW THE DATABASE      </a>
+  </div>
 </div>
-	<input type="button" onclick="window.location.href='uploadify/show.php';" value="choose files without uploading">
 </body>
 </html>
