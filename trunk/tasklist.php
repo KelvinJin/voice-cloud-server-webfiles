@@ -57,7 +57,7 @@ function SaveTaskInfo($filename,$task_info)
 	if(!empty($ch))
 	{
 		//create message queue
-		$message_queue_key = ftok(".", 'a');
+		$message_queue_key = ftok("./uploadify", 'a');
 		
 		$message_queue = msg_get_queue($message_queue_key, 0777);
 		//echo $message_queue;
