@@ -8,7 +8,7 @@
 	
 	$message_queue_key = ftok("./client", 'a');
 	
-	$message_queue = msg_get_queue($message_queue_key, 0777);
+	$message_queue = msg_get_queue($message_queue_key, 0777 | IPC_PRIVATE);
 	$filename = "./client/".$_SERVER["REMOTE_ADDR"].".txt";
 	if (!$handle = fopen ($filename,"w"))
 	{
