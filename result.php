@@ -53,10 +53,10 @@
 					while (!feof($handle))
 					{
 						$file = fgets($handle,1024);
-						if (strlen($file)!= 0)
+						if (strlen($file)!= 1 && strlen($file)!= 0)
 						{
 							$i++;
-							echo "<tr><td>$i<td><td>$file</td>";
+							echo "<tr><td>$i</td><td>$file</td>";
 							$file = fgets($handle,1024);
 							echo "<td>$file</td></tr>";
 						};
