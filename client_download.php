@@ -1,6 +1,6 @@
 <?php 
 	$file_dir = '/home/owenwj/prog/';
-	$name = 'Client.zip';
+	$name = 'voice_client.zip';
 	if (!file_exists($file_dir.$name)){
 	
 		header("Content-type: text/html; charset=utf-8");
