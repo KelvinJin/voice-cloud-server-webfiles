@@ -6,7 +6,7 @@
 <body>
 <?php
 	
-	$message_queue_key = ftok("./client", 'a');
+	$message_queue_key = ftok("./client/", 'a');
 	
 	$message_queue = msg_get_queue($message_queue_key, 0777 | IPC_PRIVATE);
 	$filename = "./client/".$_SERVER["REMOTE_ADDR"].".txt";
@@ -15,9 +15,10 @@
 		echo "can not open $filename";
 		exit;
 	};
-	fputs($handle,$_SERVER["REMOTE_ADDR"].'\n');
-	fputs($handle,"8080".'\n');
-	fputs($handle,"1".'\n');
+	fputs($handle,$_SERVER["REMOTE_ADDR"]."\n");
+	fputs($handle,"8080"."\n");
+	fputs($handle,"1"."\n");
+	fputs($handle,"\n");
 	if (!msg_send ($message_queue, 1, $_SERVER["REMOTE_ADDR"], true, true, $msg_err))
 			echo "Msg not sent because $msg_err\n";
 ?>
