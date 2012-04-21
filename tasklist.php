@@ -16,9 +16,14 @@ function SaveTaskInfo($filename,$task_info)
 		exit;
 	}else
 	{
-		$conn=mysql_connect('localhost:3306','root','wbzdmm') 			or die("connect database fail!\n").mysql_error();
-		$select=mysql_select_db('wav_test',$conn) 
-			or die("connect wav database fail!\n").mysql_error();
+		session_start();
+		$mysql_server_name=$_SESSION["mysql_server_name"];
+		$mysql_username=$_SESSION["mysql_username"];
+		$mysql_password=$_SESSION["mysql_password"];
+		$mysql_database=$_SESSION["mysql_database"];
+		$conn=mysql_connect($mysql_server_name,$mysql_username,$mysql_password) 			or die("connect database fail!\n").mysql_error();
+		$select=mysql_select_db($mysql_database,$conn) 
+		or die("connect wav database fail!\n").mysql_error();
 		//$ss="set names gbk";
 		//$aa=mysql_query($ss);
 		foreach($task_info as $value)
@@ -99,7 +104,6 @@ function SaveTaskInfo($filename,$task_info)
 			echo "Received $msg_error fetching message\n";
 		}
 		msg_remove_queue($message_queue);
-		session_start();
 		$_SESSION["filename"]=$msg.$buf;
 		header("Location: result.php");
 		

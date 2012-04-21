@@ -20,7 +20,6 @@
                 'uploader': '/uploadify/uploadify.swf',
                 'script': '/uploadify/uploadify.php',
                 'cancelImg': '/uploadify/cancel.png',
-                'folder': '/home/share',
 				'fileDesc':'please select .wav files',
 				'fileExt':'*.wav',
                 'auto':true,
@@ -32,7 +31,7 @@
 				'onAllComplete': function(event,data)
 				{
 					alert("File nums:"+data.filesUploaded+"\n"+"Error nums:"+data.errors+"\n");
-					location.href = "/uploadify/show.php";
+					location.href = "show.php";
 
 				}
 

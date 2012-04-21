@@ -1,5 +1,5 @@
 <?php 
-	$file_dir = '/home/owenwj/prog/';
+	$file_dir = './client/';
 	$name = 'voice_client.zip';
 	if (!file_exists($file_dir.$name)){
 	
