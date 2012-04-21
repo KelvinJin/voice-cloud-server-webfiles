@@ -42,8 +42,52 @@
 				<th>Seclect or not</th>
 			</tr> 
 			<?php  
-				$conn=mysql_connect('localhost:3306','root','wbzdmm') 			or die("connect database fail!\n").mysql_error();
-				$select=mysql_select_db('wav_test',$conn) 
+				function get_database_info()
+				{
+					global $mysql_server_name;
+					global $mysql_username;
+					global $mysql_password;
+					global $mysql_database;
+					$dir=$_SERVER['DOCUMENT_ROOT'].'/config';
+					if (!$fp_config = fopen($dir, "r"))
+					{
+						echo "config file doesn't exist!\n";
+						exit;
+					}
+					while(!feof($fp_config))
+					{
+						$temp = fgets($fp_config);
+
+						if (strpos($temp, "db_ip") === 0)
+						{
+							$databaseinfo0 = substr($temp, 6,-1);
+
+						}
+
+						if (strpos($temp, "db_port") === 0)
+						{
+							$databaseinfo1 = substr($temp, 8,-1);
+						}
+
+						if (strpos($temp, "db_username") === 0)
+						{
+							$databaseinfo2 = substr($temp, 12,-1);
+						}
+
+						if (strpos($temp, "db_password") === 0)
+						{
+							$databaseinfo3 = substr($temp, 12,-1);
+						}
+					}
+					$mysql_server_name=$databaseinfo0.':'.$databaseinfo1;
+					$mysql_username=$databaseinfo2;
+					$mysql_password=$databaseinfo3;
+					$mysql_database='wav_test';
+				    	fclose($fp_config);
+				}
+				get_database_info();
+				$conn=mysql_connect($mysql_server_name,$mysql_username,$mysql_password) 			or die("connect database fail!\n").mysql_error();
+				$select=mysql_select_db($mysql_database,$conn) 
 				or die("connect wav database fail!\n").mysql_error();
 				$str="select * from WAV_FILES order by uploadTime desc";
 				$recstr=mysql_query($str);
@@ -56,6 +100,11 @@
 					$row=mysql_fetch_row($recstr);
 				}
 				mysql_close($conn);
+				session_start();
+				$_SESSION["mysql_server_name"]=$mysql_server_name;
+				$_SESSION["mysql_username"]=$mysql_username;
+				$_SESSION["mysql_password"]=$mysql_password;
+				$_SESSION["mysql_database"]=$mysql_database;
 			?>
 		</table>
 		<input type="button" onclick="chooseAll('file_ch[]')" value="choose all">

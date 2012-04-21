@@ -84,7 +84,7 @@
 						if (strlen($file)!= 0)
 						{
 							$i++;
-							echo "<tr><td>$i<td><td>$file</td>";
+							echo "<tr><td>$i</td><td>$file</td>";
 						}
 					}
 					if ($i==0) {
